@@ -4,20 +4,43 @@
 <title>McNobzy</title>
 <link href="{% static 'css/bootstrap.min.css' %}" rel="stylesheet">
 <style>
-  .navbar a{
-    color: #fff;
+  body{
+    background-color: #dbffde;
+  }
+  .navbar{
+    box-shadow: 0.5px 0.5px 2px 1.5px #aaa;
+  }
+ .navbar li{
+  text-transform: uppercase;
+  font-weight: 400;
+ }
+
+ .navbar-brand{
+    font-weight: 900;
+    font-family: 'Monotype Corsiva';
   }
 
-  .container{
-    border-bottom: 4px solid black;
+  .posts{
+    border: 1px solid #f0f0f0;
+    background-color: #f0f0f0;
+    margin-bottom: 10px;
+    box-shadow: 0.5px 0.5px 2px 1px #aaa;
   }
+
+  .posts h2{
+    text-transform: uppercase;
+    color: black;
+    font-size: 16px;
+  }
+
 </style>
-<body>
+<body class="bg">
   
+  {% include 'header.html' %}
 
-  <nav class="navbar navbar-expand-lg bg-dark">
+  <!-- <nav class="navbar navbar-expand-lg bg-light">
     <div class="container-fluid">
-      <a class="navbar-brand" href="/">McNobzy Blog</a>
+      <a class="navbar-brand" href="/">McNobzyBlog</a>
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
@@ -49,7 +72,7 @@
             </a>
             <ul class="dropdown-menu">
               <li><a class="dropdown-item" href="#">Profile</a></li>
-              <li><a class="dropdown-item" href="#">Posts</a></li>
+              <li><a class="dropdown-item" href="/author/{{request.user.id}}/{{request.user.username}}">Posts</a></li>
               <li><hr class="dropdown-divider"></li>
               <li><a class="dropdown-item" href="#">Logout</a></li>
             </ul>
@@ -63,7 +86,7 @@
         </form>
       </div>
     </div>
-  </nav>
+  </nav> -->
    
 <!-- <div class="accordion" id="accordionExample">
 
@@ -100,10 +123,10 @@
       
     {% for post in posts reversed %}
     
-        <div class="container">
-          {% if post.post_image %}
-          <img src="{{post.post_image.url}}" style="width:600px;height:200px;" class="img-fluid" alt="...">
-          {% endif %}
+        <div class="container posts">
+          <!-- {% if post.post_image %} -->
+          <!-- <img src="{{post.post_image.url}}" style="width:600px;height:400px;" class="img-fluid" alt="..."> -->
+          <!-- {% endif %} -->
             <a href="/post/{{post.id}}" style="text-decoration: none;"><h2>{{post.title}}</h2></a>
             
             <p>by <a style="text-decoration:none" href="author/{{post.author.id}}/{{post.author.username}}">{{post.author}}</a> at {{post.posted_at}}</p>
@@ -115,7 +138,7 @@
 
     <script src="{% static 'js/bootstrap.bundle.min.js' %}"></script>
 
-
+{% include 'footer.html' %}
 </body>
 </html>
 
