@@ -1,0 +1,38 @@
+<html>
+<title>McNobzy</title>
+<style>
+    section {
+        width: 75%;
+        /* background-color: skyblue; */
+        padding:15px;
+        /* float:left; */
+        border-bottom: 20px;
+
+    }
+
+    post-body{
+        text-decoration: none;
+        text-decoration-line: none;
+
+    }
+</style>
+<body>
+    <h1>Welcome to <a href="/">McNobzy's Blog</a></h1>
+
+    
+    <h1>Posts by {{author_data.name}}</h1>
+  
+
+    {% for post in author_data.posts reversed %}
+    
+        <section class="post-body">
+            <a href="/post/{{post.id}}"><h2>{{post.title}}</h2></a>
+
+            <p>by <bold>{{post.author}} at {{post.posted_at}}</p>
+            <p>{{post.body|truncatewords:20}}</p>
+        </section>
+    {% endfor %}
+
+</body>
+</html>
+
