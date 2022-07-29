@@ -1,44 +1,30 @@
+{% load static %}
 <html>
 <title>McNobzy</title>
+<link href="{% static 'css/bootstrap.min.css' %}" rel="stylesheet">
+<script src="{% static 'js/bootstrap.bundle.min.js' %}"></script>
+
 <style>
-    section {
-        width: 75%;
-        /* background-color: skyblue; */
-        padding:15px;
-        /* float:left; */
-        border-bottom: 20px;
 
-    }
-
-    post-body{
-        text-decoration: none;
-        text-decoration-line: none;
-
-    }
 </style>
 <body>
-    <h1>Welcome to <a href="/">McNobzy's Blog</a></h1>
-
-    {% if user.is_authenticated %}
-    <h1>Welcome {{user.username}} | <a href="/logout">Logout</a>| <a href="/create">Create Post</a> </h1>
-    {% else %}
-    <h1>Welcome | <a href="/login">Login</a> </h1>
-    {% endif %}
-
+   {% include 'header.html' %}
     
-        <section class="post-body">
+        <section class="container">
             <h2>{{post.title}}</h2>
-            {% if post.post_image %}
+            <!-- {% if post.post_image %}
             <img src="{{post.post_image.url}}" class="img-fluid" alt="...">
-            {% endif %}
+            {% endif %} -->
 
             <p>by <a style="text-decoration:none" href="/author/{{post.author.id}}/{{post.author.username}}">{{post.author}}</a> at {{post.posted_at}}</p>
             <p>{{post.body}}</p>
-        </section>
-        <div>
-            <a href="/edit/{{post.id}}">Edit Post</a>
-        </div>
 
+            <div>
+                <a class="btn btn-primary" href="/edit/{{post.id}}">Edit Post</a>
+            </div>
+        </section>
+        
+{% include 'footer.html' %}
 </body>
 </html>
 

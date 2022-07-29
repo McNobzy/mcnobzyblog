@@ -3,6 +3,7 @@
 <html>
 <title>McNobzy</title>
 <link href="{% static 'css/bootstrap.min.css' %}" rel="stylesheet">
+<link href="{% static 'icons/css/font-awesome.min.css' %}" rel="stylesheet" >
 <style>
   body{
     background-color: #dbffde;
@@ -120,9 +121,9 @@
           {% endif %}
         {% endfor %}
           </div> -->
-      
+          <section> 
     {% for post in posts reversed %}
-    
+          
         <div class="container posts">
           <!-- {% if post.post_image %} -->
           <!-- <img src="{{post.post_image.url}}" style="width:600px;height:400px;" class="img-fluid" alt="..."> -->
@@ -133,6 +134,8 @@
             <p>{{post.body|truncatewords:20}}</p>
         </div>
     {% endfor %}
+  </section>
+
 
 
 
