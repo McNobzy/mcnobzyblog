@@ -136,3 +136,48 @@ def search(request):
         return render(request, 'search.html', {'posts':posts, 'search_term':search_term})
     else:
         return render(request, 'index.html')
+
+
+
+def profile(request, name):
+    if request.user.is_authenticated:
+        pk = request.user.id
+        posts = Post.objects.all().filter(author__exact=pk)
+        # user = User.objects.get(id=pk)
+        # name = user.username
+
+        author_data = {
+            'posts':posts,
+            'name':name
+        }
+    
+        return render(request, "profile.html", {'author_data':author_data})
+    
+    return redirect("login")
+
+
+
+def delete(request, pk):
+    post = Post.objects.get(id=pk)
+    post.delete()
+    return redirect("/")
+
+
+def edit_profile(request, pk):
+    profile = User.objects.get(id=pk)
+
+    if request.method == "POST":
+        username = request.POST['username']
+        email = request.POST['email']
+        # password = request.POST['password']
+        firstname = request.POST['first_name']
+        lastname = request.POST['last_name']
+
+        profile.username = username
+        profile.email = email
+        profile.first_name = firstname
+        profile.last_name = lastname
+        profile.save()
+        return redirect("/profile/{{request.user.username}}")
+
+    return render(request, 'editRegister.html', {'profile':profile})

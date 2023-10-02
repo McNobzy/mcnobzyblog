@@ -4,33 +4,60 @@
         bottom: 0;
         width: 100%;
         height: 60px;
+        background-color: rgb(70, 68, 68);
+        color: white;
     }  
     
     body, html{
     border:0;
     padding:0;
     margin:0;
-}
+    }
+
+    #copy {
+        font-weight: 700;
+    }
+
+    .row{
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        width: 90%;
+    }
+
+    .col-md-4{
+        text-align: center;
+    }
+
+   
+
 </style>
 
-<footer class="navbar bg-light">
+<footer class="navbar bg-dark mcnobzyBlogFooter">
     <div class="container">
 
   
 
     <div class="row">
         <div class="col-md-4">
-            <i class="fa fa-address-book"></i>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. 
+            <!-- <i class="fa fa-address-book"></i> -->
+            <p>olaoluwanwobodo@ymail.com
+            +234 818 986 4599</p>
         </div>
         <div class="col-md-4">
-            Lorem ipsum dolor sit amet, consectetur adipiscingteger lacinia dui quam, a consectetur massa tincidunt eu
+            <p id="copy"></p>
 
         </div>
         <div class="col-md-4">
-            Lorem ipsum dolor sit amet, consectetur aui quam, a consectetur massa tincidunt eu
+            olaoluwanwobodo@ymail.com 
+            +234 818 986 4599
 
         </div>
     </div>
 </div>
+
+<script>
+    const blogCreationDate = new Date();
+    document.getElementById('copy').innerHTML = "McNobzy Blog " + "&copy;" + blogCreationDate.getFullYear();
+</script>
 </footer>

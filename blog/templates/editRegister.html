@@ -1,0 +1,8 @@
+<form action="/edit-profile/{{request.user.id}}" method="post">
+    {% csrf_token %}
+    <input type="text" name="username" placeholder="Username..." value="{{profile.username}}" id=""><br>
+    <input type="text" name="email" placeholder="Email..." value="{{profile.email}}" id=""><br>
+    <input type="text" name="first_name" placeholder="First name..." value="{{profile.first_name}}" id=""><br>
+    <input type="text" name="last_name" placeholder="Last name..." value="{{profile.last_name}}" id=""><br>
+    <input type="submit" value="Save Changes">
+</form>

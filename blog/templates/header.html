@@ -28,9 +28,6 @@
             <a class="nav-link" aria-current="page" href="/">Home</a>
           </li>
           {% if user.is_authenticated %}
-          <li class="nav-item">
-            <a class="nav-link" href="/logout">Logout</a>
-            </li>
             <li class="nav-item">
               <a class="nav-link" href="/create">Create Post</a>
             </li>            
@@ -49,10 +46,11 @@
               {{user.username}}
             </a>
             <ul class="dropdown-menu">
-              <li><a class="dropdown-item" href="#">Profile</a></li>
+              <li><a class="dropdown-item" href="/profile/{{request.user.username}}">Profile</a></li>
+              
               <li><a class="dropdown-item" href="/author/{{request.user.id}}/{{request.user.username}}">Posts</a></li>
               <li><hr class="dropdown-divider"></li>
-              <li><a class="dropdown-item" href="#">Logout</a></li>
+              <li><a class="dropdown-item" href="/logout">Logout</a></li>
             </ul>
           </li>
 {% endif %}

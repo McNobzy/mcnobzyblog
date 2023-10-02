@@ -22,105 +22,33 @@
   }
 
   .posts{
-    border: 1px solid #f0f0f0;
-    background-color: #f0f0f0;
+    /* border: 1px solid #f0f0f0; */
+    /* background-color: #f0f0f0; */
     margin-bottom: 10px;
-    box-shadow: 0.5px 0.5px 2px 1px #aaa;
+    border-bottom: 1px solid black;
+    /* box-shadow: 0.5px 0.5px 2px 1px #aaa; */
   }
 
   .posts h2{
-    text-transform: uppercase;
+    text-transform: lowercase;
     color: black;
     font-size: 16px;
   }
+
+  .posts a:hover, h2:hover{
+    color: skyblue;
+  }
+
+  .delete-link:hover {
+        color: red !important;
+    }
 
 </style>
 <body class="bg">
   
   {% include 'header.html' %}
 
-  <!-- <nav class="navbar navbar-expand-lg bg-light">
-    <div class="container-fluid">
-      <a class="navbar-brand" href="/">McNobzyBlog</a>
-      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-      <div class="collapse navbar-collapse" id="navbarSupportedContent">
-        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-          <li class="nav-item">
-            <a class="nav-link" aria-current="page" href="/">Home</a>
-          </li>
-          {% if user.is_authenticated %}
-          <li class="nav-item">
-            <a class="nav-link" href="/logout">Logout</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="/create">Create Post</a>
-            </li>            
-            {% else %}
-            <li class="nav-item">
-              <a class="nav-link" href="/login">Login</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="/register">Register</a>
-            </li>
-            {% endif %}
-          </li>
-{% if user.is_authenticated %}
-          <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-              {{user.username}}
-            </a>
-            <ul class="dropdown-menu">
-              <li><a class="dropdown-item" href="#">Profile</a></li>
-              <li><a class="dropdown-item" href="/author/{{request.user.id}}/{{request.user.username}}">Posts</a></li>
-              <li><hr class="dropdown-divider"></li>
-              <li><a class="dropdown-item" href="#">Logout</a></li>
-            </ul>
-          </li>
-{% endif %}
-        </ul>
-        <form class="d-flex" role="search" method="POST" action="search">
-          {% csrf_token %}
-          <input class="form-control me-2" type="search" placeholder="Search" name="search_bar" aria-label="Search">
-          <button class="btn btn-outline-success" type="submit">Search</button>
-        </form>
-      </div>
-    </div>
-  </nav> -->
-   
-<!-- <div class="accordion" id="accordionExample">
-
-        {% for post in posts reversed %}
-          {% if post == posts.first %}
-            <div class="accordion-item">
-                <h2 class="accordion-header" id="headingOne">
-                  <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
-                    {{post.title}}
-                  </button>
-                </h2>
-                <div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
-                  <div class="accordion-body">
-                    by <strong>{{post.author}} at {{post.posted_at}} </strong> {{post.body}}
-                  </div>
-                </div>
-              </div>
-          {% else %}
-            <div class="accordion-item">
-              <h2 class="accordion-header" id="headingOne">
-              <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
-                {{post.title}}
-              </button>
-            </h2>
-            <div id="collapseOne" class="accordion-collapse collapse" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
-              <div class="accordion-body">
-                by <strong>{{post.author}} at {{post.posted_at}} </strong> {{post.body}}
-              </div>
-            </div>
-          </div>
-          {% endif %}
-        {% endfor %}
-          </div> -->
+  
           <section> 
     {% for post in posts reversed %}
           
@@ -128,10 +56,12 @@
           <!-- {% if post.post_image %} -->
           <!-- <img src="{{post.post_image.url}}" style="width:600px;height:400px;" class="img-fluid" alt="..."> -->
           <!-- {% endif %} -->
-            <a href="/post/{{post.id}}" style="text-decoration: none;"><h2>{{post.title}}</h2></a>
+            <a href="/post/{{post.id}}" style="text-decoration: none;"><h2><strong>{{post.title}}</strong></h2></a>
             
             <p>by <a style="text-decoration:none" href="author/{{post.author.id}}/{{post.author.username}}">{{post.author}}</a> at {{post.posted_at}}</p>
-            <p>{{post.body|truncatewords:20}}</p>
+            <p>{{post.body|truncatewords:10}}</p>
+
+            
         </div>
     {% endfor %}
   </section>
@@ -142,6 +72,13 @@
     <script src="{% static 'js/bootstrap.bundle.min.js' %}"></script>
 
 {% include 'footer.html' %}
+
+<!-- Things still left to be done 
+- Implement actual footer - Copyright, location?, contact ===
+- Implement profile page 
+- Implement delete function ====
+- Implement profile picture *
+- Design/get logo for McNobzyBlog -->
 </body>
 </html>
 
