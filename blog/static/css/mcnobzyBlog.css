@@ -14,7 +14,7 @@
 
 .mcnobzyBlogFooter {
     position: relative;
-    top: 0;
+    bottom: 0;
 }
 
 .viewPostButton{
@@ -28,23 +28,35 @@
     flex-direction: row;
     width: 80%;
     height: 100vh;
+    padding: 10px;
+}
+
+.outerContainer{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
 }
 
 .profileContainerRowLeft{
     width: 65%;
-    border: 1px dotted black;
+    border-right: 2px solid black;
 }
 
 .profileContainerRowRight{
     width: 35%;
-    border: 2px dotted black;
+    /* border: 2px dotted black; */
     display:flex;
     flex-direction: column;
 }
 
 .profileContainerRowRightTop{
-    border: 1px dotted black;
+    border-bottom: 1px solid black;
     height: 50%;
+    padding-left: 10px;
+}
+
+.profileContainerRowRightBottom{
+    padding-left: 10px;
 }
 
 .postImageContainer{
@@ -58,4 +70,8 @@
     height: 400px;
     text-align: center;
     /* width: 200px !important; */
+}
+
+.delete_link{
+    color: red !important;
 }

@@ -12,7 +12,7 @@ urlpatterns = [
     path('edit/<str:pk>/', views.edit_post, name='edit'),
     path('edit-profile/<str:pk>', views.edit_profile, name='edit-profile'),
     path('profile/<str:name>', views.profile, name='profile'),
-    path('search', views.search, name='search'),
+    path('search/', views.search, name='search'),
     path('delete/<str:pk>', views.delete, name="delete")
     # path('edit/<str:pk>/<str:func>', views.editPost, name="editPost")
 ]

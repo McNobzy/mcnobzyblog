@@ -14,40 +14,47 @@
 
     }
 
-    .posts{
-    border: 1px solid #f0f0f0;
-    background-color: #f0f0f0;
+  .posts{
+    /* border: 1px dotted red; */
     margin-bottom: 10px;
     box-shadow: 0.5px 0.5px 2px 1px #aaa;
+    height: 100%;
+  }
+
+  .eachPost{
+    border-bottom: 1px solid black;
   }
 
   .posts h2{
-    text-transform: uppercase;
+    text-transform: lowercase;
     color: black;
+    font-weight: 700;
     font-size: 16px;
-
   }
 
   .posts a{
     text-decoration: none;
+    color: skyblue;
   }
 </style>
-<body>
 {% include 'header.html' %}
     
     <h1>Posts by {{author_data.name}}</h1>
   
-
+    <section class="container posts">
     {% for post in author_data.posts reversed %}
     
-        <section class="container posts">
+        <div class="eachPost">
             <a href="/post/{{post.id}}"><h2>{{post.title}}</h2></a>
 
-            <p>by <bold>{{post.author}} at {{post.posted_at}}</p>
+            <p>by <a href="">{{post.author}}</a> at {{post.posted_at}}</p>
             <p>{{post.body|truncatewords:20}}</p>
-        </section>
+          </div>
     {% endfor %}
+  </section>
 
-</body>
+    {% include 'footer.html' %}
+    <script src="{% static 'js/bootstrap.bundle.min.js' %}"></script>
+
 </html>
 

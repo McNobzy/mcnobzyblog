@@ -10,11 +10,12 @@
 
 {% include "header.html" %}
 
+<div class="outerContainer">
 <div class="profileContainer">
     <div class="profileContainerRowLeft">
         <div class="profilePosts">
 
-            <h1>Your Posts {{request.user.username}}</h1>
+            <h1>Posts by {{request.user.username}}</h1>
   
 
                 {% for post in author_data.posts reversed %}
@@ -24,7 +25,9 @@
 
                         <p>by <bold>{{post.author}} at {{post.posted_at}}</p>
 
-                        <a href="/delete/{{post.id}}" class="delete-link">Delete</a>
+                        <a href="/edit/{{post.id}}">Edit Post</a>&nbsp;
+
+                        <a href="/delete/{{post.id}}" class="delete_link">Delete</a>
                     </section>
                 {% endfor %}
 
@@ -41,6 +44,7 @@
 
         </div>
         <div class="profileContainerRowRightBottom">
+            <h2>Latest Posts by {{request.user.username}}</h2>
             {% for post in author_data.posts reversed %}
                 
                     <section class="container posts">
@@ -52,3 +56,8 @@
         </div>
     </div>
 </div>
+
+</div>
+
+{% include "footer.html" %}
+<script src="{% static 'js/bootstrap.bundle.min.js' %}"></script>

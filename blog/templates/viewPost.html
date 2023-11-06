@@ -1,8 +1,8 @@
 {% load static %}
 <html>
-<link href="{% static 'css/mcnobzyBlog.css' %}" rel="stylesheet">
 <script src="{% static 'js/bootstrap.bundle.min.js' %}"></script>
 <link href="{% static 'css/bootstrap.min.css' %}" rel="stylesheet">
+<link href="{% static 'css/mcnobzyBlog.css' %}" rel="stylesheet">
 <title>{{post.title}}</title>
 <style>
 
@@ -10,7 +10,6 @@
 
     
 </head>
-<body>
    {% include 'header.html' %}
     
         <section class="container viewPostContainer">
@@ -26,13 +25,10 @@
             <div> 
                 <p>{{post.body}}</p>
             </div>
-
-                <div class="viewPostButton">
-                    <a class="btn btn-primary" href="/edit/{{post.id}}">Edit Post</a>
-                </div>
         </section>
         
 {% include 'footer.html' %}
-</body>
+<script src="{% static 'js/bootstrap.bundle.min.js' %}"></script>
+
 </html>
 
